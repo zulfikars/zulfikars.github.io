@@ -109,14 +109,15 @@ CSS for Muhammad Zulfikar Rakhmat
 		
 		.intro p {
 			font-size: 20px;
+			line-height: 150%;
 		}
 
 	/**** BULLET POINTS CODE ****/
 
 		ul, li { 
-			margin: 0px 0px 0px 0px; 
+			margin: 0px 3px 3px 0px; 
 			font-size: 15px;
-			line-height: 0;			
+			line-height: 150%;			
 		}
 		
 		ul {
