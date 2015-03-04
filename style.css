@@ -16,7 +16,7 @@ CSS for Muhammad Zulfikar Rakhmat
 			border-bottom: 0;
 			padding-top: 10px;
 			padding-bottom: 30px;
-			font-size: 27px;
+			font-size: 35px;
 			font-family: 'Merriweather', serif;
 		}
 
@@ -50,7 +50,7 @@ CSS for Muhammad Zulfikar Rakhmat
 
 		.box {
 			position: relative;
-			width: 70%;
+			width: 90%;
 			border: none; 
 			background-color: white;
 			text-align: left;
@@ -93,6 +93,7 @@ CSS for Muhammad Zulfikar Rakhmat
 			text-decoration: none;
 			color: black;
 			margin-left: 3;
+			font-size: 25px;
 		}
 		
 		t3 {
@@ -108,7 +109,7 @@ CSS for Muhammad Zulfikar Rakhmat
 		}
 		
 		.intro p {
-			font-size: 20px;
+			font-size: 22px;
 			line-height: 150%;
 		}
 
@@ -116,8 +117,8 @@ CSS for Muhammad Zulfikar Rakhmat
 
 		ul, li { 
 			margin: 0px 3px 3px 0px; 
-			font-size: 15px;
-			line-height: 150%;			
+			font-size: 20px;
+			line-height: 150%;
 		}
 		
 		ul {
