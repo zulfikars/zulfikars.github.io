@@ -285,7 +285,7 @@ header#banner.site-header {
 .page-layout {
   display: grid;
   grid-template-columns: 180px minmax(0, 1fr);
-  column-gap: 32px;
+  column-gap: 40px;
   align-items: start;
   width: 100%;
   max-width: 960px;
@@ -361,4 +361,50 @@ main#content figure img {
   .social-links {
     justify-content: center;
   }
+}
+
+
+/* Multi-page navigation */
+header#banner.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+header#banner.site-header h2 { margin: 0; flex: 0 1 auto; }
+header#banner.site-header nav.top-nav { display: block; margin-left: auto; }
+header#banner.site-header nav.top-nav ul {
+  display: flex; align-items: center; justify-content: flex-end;
+  flex-wrap: wrap; gap: 20px; list-style: none; margin: 0; padding: 0;
+  font-size: 16px; text-transform: none;
+}
+header#banner.site-header nav.top-nav ul li { display: block; margin: 0; }
+header#banner.site-header nav.top-nav a {
+  color: #454545; text-decoration: none; white-space: nowrap;
+}
+header#banner.site-header nav.top-nav a:hover,
+header#banner.site-header nav.top-nav a.active { color: #007dfa; }
+header#banner.site-header nav.top-nav a.active { font-weight: 600; }
+@media (max-width: 700px) {
+  header#banner.site-header {
+    flex-direction: column; justify-content: center; align-items: center;
+    gap: 16px; text-align: center;
+  }
+  header#banner.site-header nav.top-nav { margin: 0 auto; width: 100%; }
+  header#banner.site-header nav.top-nav ul { justify-content: center; gap: 12px 18px; }
+}
+
+
+/* ===== Alignment fix: first section heading and ordered-list markers ===== */
+/* Remove the browser's default top margin from the first heading so it starts
+   level with the top of the profile photo. Later section headings keep spacing. */
+main#content > h3:first-child {
+  margin-top: 0;
+}
+
+/* Keep ordered-list markers aligned with the left edge of section headings. */
+main#content ol {
+  margin-left: 0;
+  padding-left: 1.5em;
 }
