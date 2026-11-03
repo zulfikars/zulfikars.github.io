@@ -1,1 +1,364 @@
 *,*:before,*:after{box-sizing:border-box}html{font-size:62.5%}body{font-size:16px;font-size:1.6rem;font-family:helvetica neue,arial,sans-serif;color:#313a3d;width:100%;margin:0 auto;padding:0 16px;line-height:1.6}header#banner{margin:25px 0}header#banner a{color:#313a3d;text-decoration:none}header#banner a:hover{text-decoration:underline}header#banner h2{display:inline;font-size:21px;font-size:2.1rem;margin:0 8px 0 0}header#banner nav{display:inline-block}header#banner nav ul{list-style-type:none;font-size:1.05em;text-transform:lowercase;margin:0;padding:0}header#banner nav ul li{display:inline;margin:0 3px}header#banner nav ul li a{color:#454545}main#content a{color:#007dfa;text-decoration:none}main#content a:hover{text-decoration:underline}main#content h1,main#content h2,main#content h3,main#content h4,main#content h5,main#content h6{margin-bottom:0;line-height:1.15}main#content h3{font-size:19px;font-size:1.9rem}main#content h1+p,main#content h2+p,main#content h3+p,main#content h4+p,main#content h5+p,main#content h6+p{margin-top:5px}main#content p{color:#394548;margin:16px 0}main#content hr{height:1px;border:0;background:#d8d8d8}main#content ul#posts{list-style-type:none;font-size:16px;font-size:1.6rem;margin-top:0;padding:0}main#content ul#posts li{margin:5px 0;padding:0}main#content ul#posts small{font-size:.8em;color:#767676;margin-left:10px}main#content ul#posts li a{text-decoration:none}main#content ul#posts li a:hover{color:#369aff}main#content ul#posts li a:hover small{color:inherit}main#content header#post-header h1{display:block;font-size:23px;font-size:2.3rem;line-height:1.15}main#content header#post-header div{display:block;font-size:.85em;color:#767676}main#content #toc{border:1px solid #b1b1b1;border-radius:1px;line-height:26px;margin:16px 0;padding:9px 14px}main#content #toc h4{font-size:1.06em;color:#3d3d3d;margin:0}main#content #toc nav#TableOfContents{margin-top:4px}main#content #toc nav#TableOfContents>ul,main#content #toc nav#TableOfContents>ol{margin-left:-40px}main#content #toc ul,main#content #toc ol{font-size:.98em;margin:0;padding:0 0 0 40px}main#content #toc ul{list-style-type:none}main#content #toc ol{counter-reset:item}main#content #toc ol li{display:block}main#content #toc ol li:before{content:counters(item,".")". ";counter-increment:item}main#content img{max-width:100%;margin:0 auto}main#content figure{margin:16px 0}main#content figure img{display:block;max-width:100%;margin:0 auto}main#content figure figcaption{font-size:.92em;font-style:italic;line-height:22px;text-align:center;margin-top:6px;padding:0 10px}main#content figure figcaption h4{font-style:normal;display:inline;margin:0}main#content figure figcaption p{display:inline;margin:0;padding-left:8px}main#content blockquote{font-style:italic;margin-top:10px;margin-bottom:10px;margin-left:50px;padding-left:15px;border-left:3px solid #ccc}main#content code,main#content pre{font-family:menlo,monospace}main#content code{font-size:.96em;padding:0 5px}main#content pre{display:block;overflow-x:auto;font-size:14px;font-size:1.4rem;white-space:pre;margin:20px 0;padding:1.5rem;line-height:1.4}main#content pre code{padding:0}main#content section.footnotes{font-size:.9em}footer#footer{font-size:14px;font-size:1.4rem;font-weight:300;color:#949494;margin:40px 0}@media(min-width:770px){body{width:600px;line-height:1.5}main#content hr{width:108%;margin-left:-3.8%}header#banner h2{font-size:25px;font-size:2.5rem}main#content h3{font-size:20px;font-size:2rem}main#content ul#posts{font-size:18px;font-size:1.8rem}main#content header#post-header h1{font-size:26px;font-size:2.6rem}main#content img{max-width:108%;margin-left:-3.8%}main#content figure{margin-left:-3.8%}main#content figure img{max-width:108%}main#content pre{width:108%;margin-left:-3.8%;padding:1.5rem 2.2rem}}@media(prefers-color-scheme:dark){html{scrollbar-color:#6c6c6c #2e2e2e}body{color:#ebebeb;background:#121212}header#banner a{color:#e0e0e0;text-decoration:none}header#banner nav ul li a{color:#ccc}main#content a{color:#00b1ed}main#content p{color:#f5f5f5}main#content hr{background:#5c5c5c}main#content #toc h4{color:#d4d4d4}main#content ul#posts small{color:#a7a7a7}main#content ul#posts li a:hover{color:#21c7ff}main#content header#post-header div{color:#a7a7a7}}
+
+
+/* ===== Profile layout matching the supplied reference ===== */
+body{max-width:100%;width:100%;padding:0 24px;line-height:1.5}
+header#banner{max-width:960px;margin:18px auto 48px}
+.site-header{display:flex;align-items:center;justify-content:space-between;gap:24px}
+header#banner h2{margin:0;font-size:2.1rem;font-weight:300}
+header#banner nav ul{display:flex;align-items:center;gap:28px;margin:0;padding:0;list-style:none;font-size:1.25rem}
+header#banner nav ul li{margin:0}
+header#banner nav ul li a{color:#999;text-decoration:none;transition:color .2s ease}
+header#banner nav ul li a:hover,header#banner nav ul li a.active{color:#3458d4}
+.page-layout{display:grid;grid-template-columns:128px minmax(0,1fr);gap:24px;align-items:start;max-width:960px;margin:0 auto}
+.profile-sidebar{position:sticky;top:24px;width:128px}
+.profile-photo{display:block;width:128px;height:128px;object-fit:cover;object-position:center;margin:0!important;border-radius:14px;background:#f0f1f4}
+.social-links{display:flex;justify-content:center;align-items:center;gap:5px;margin-top:12px}
+.social-links a{display:inline-flex;width:20px;height:20px;align-items:center;justify-content:center;border-radius:50%;background:#aaa;color:#fff!important;transition:background .2s ease,transform .2s ease}
+.social-links a:hover{background:#4562cc;transform:translateY(-2px);text-decoration:none!important}
+.social-links svg{display:block;width:13px;height:13px;fill:currentColor}
+main#content{width:100%;min-width:0}
+main#content p{margin:0 0 13px}
+main#content hr{width:100%;margin:28px 0}
+main#content img{max-width:100%;margin:0}
+main#content figure{margin:16px 0}
+main#content figure img{max-width:100%}
+main#content pre{width:100%;margin-left:0}
+main#content ol,main#content ul{padding-left:24px}
+main#content li{margin-bottom:5px}
+@media(max-width:700px){
+ body{padding:0 18px}
+ header#banner{margin:18px auto 30px}
+ .site-header{align-items:flex-start;flex-direction:column;gap:12px}
+ header#banner nav ul{gap:22px}
+ .page-layout{grid-template-columns:1fr;gap:22px}
+ .profile-sidebar{position:static;display:flex;align-items:center;gap:14px;width:100%}
+ .profile-photo{width:96px;height:96px;flex:0 0 96px;border-radius:12px}
+ .social-links{justify-content:flex-start;margin-top:0}
+}
+
+
+/* ===== Requested refinements: IBM Plex Sans, clean header, responsive 960px layout ===== */
+:root {
+  font-family: "IBM Plex Sans", sans-serif;
+}
+html {
+  font-family: "IBM Plex Sans", sans-serif;
+}
+body {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 24px;
+  font-family: "IBM Plex Sans", sans-serif;
+  line-height: 1.55;
+}
+.page-layout {
+  width: 100%;
+  max-width: 960px;
+  margin: 34px auto 0;
+  grid-template-columns: 128px minmax(0, 1fr);
+  gap: 24px;
+}
+.profile-sidebar {
+  width: 128px;
+}
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+}
+.social-links a {
+  flex: 0 0 20px;
+}
+main#content {
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+main#content img,
+main#content figure img {
+  max-width: 100%;
+  height: auto;
+}
+main#content pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
+@media (max-width: 700px) {
+  body {
+    padding: 0 18px;
+  }
+  .page-layout {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    margin-top: 24px;
+  }
+  .profile-sidebar {
+    position: static;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+  }
+  .profile-photo {
+    width: 96px;
+    height: 96px;
+    flex: 0 0 96px;
+  }
+  .social-links {
+    justify-content: flex-start;
+    margin-top: 0;
+    max-width: 180px;
+  }
+  .social-links a {
+    width: 22px;
+    height: 22px;
+    flex-basis: 22px;
+  }
+  main#content p {
+    margin-bottom: 14px;
+  }
+}
+@media (max-width: 380px) {
+  body {
+    padding: 0 14px;
+  }
+  .profile-photo {
+    width: 82px;
+    height: 82px;
+    flex-basis: 82px;
+  }
+  .profile-sidebar {
+    gap: 12px;
+  }
+  .social-links {
+    max-width: 150px;
+  }
+}
+
+
+/* ===== Header and typography refinements ===== */
+body {
+  font-family: "IBM Plex Sans", sans-serif;
+}
+header#banner.site-header {
+  display: block;
+  width: 100%;
+  max-width: 960px;
+  margin: 28px auto 30px;
+  padding: 0;
+}
+header#banner.site-header h2 {
+  display: block;
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.25;
+  font-weight: 400;
+}
+header#banner.site-header h2 a {
+  color: #313a3d;
+  text-decoration: none;
+  font-weight: 400;
+}
+header#banner.site-header h2 strong {
+  font-weight: 700;
+}
+main#content {
+  font-size: 18px;
+  line-height: 1.6;
+}
+main#content p,
+main#content li {
+  font-size: 18px;
+}
+main#content h3 {
+  font-size: 24px;
+  line-height: 1.25;
+}
+@media (max-width: 700px) {
+  header#banner.site-header {
+    margin: 22px auto 24px;
+  }
+  header#banner.site-header h2 {
+    font-size: 24px;
+  }
+  main#content,
+  main#content p,
+  main#content li {
+    font-size: 18px;
+  }
+  main#content h3 {
+    font-size: 24px;
+  }
+}
+
+
+/* ===== Profile sizing, spacing, and mobile alignment (V4) ===== */
+
+/* Give the page header and main content a clearer vertical separation. */
+header#banner.site-header {
+  margin-bottom: 58px;
+}
+
+/* Profile photo and social icons. */
+.profile-photo {
+  width: 180px;
+  height: 180px;
+  display: block;
+  object-fit: cover;
+}
+.social-links {
+  gap: 7px;
+}
+.social-links a {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+}
+.social-links svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Mobile: centered header, centered photo, icons directly underneath. */
+@media (max-width: 700px) {
+  body {
+    padding: 0 20px;
+  }
+  header#banner.site-header {
+    text-align: center;
+    margin-top: 22px;
+    margin-bottom: 42px;
+  }
+  .page-layout {
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 0;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .profile-sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    width: 100%;
+    text-align: center;
+  }
+  .profile-photo {
+    width: 180px;
+    height: 180px;
+    flex: 0 0 180px;
+    margin: 0 auto;
+  }
+  .social-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: none;
+  }
+  .social-links a,
+  .social-links svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+
+/* ===== V5: natural-flow profile, safe content column, proportional social icons ===== */
+
+/* Keep the profile in normal document flow; it must not stick while scrolling. */
+.profile-sidebar {
+  position: static !important;
+  top: auto !important;
+  align-self: start;
+  width: 180px;
+  min-width: 0;
+}
+
+/* Reserve a full 180px column for the photo, plus a clear gutter before content. */
+.page-layout {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  column-gap: 32px;
+  align-items: start;
+  width: 100%;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+main#content {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+main#content img,
+main#content figure,
+main#content figure img,
+main#content pre,
+main#content hr {
+  max-width: 100%;
+}
+main#content img,
+main#content figure img {
+  width: auto;
+  height: auto;
+  margin-left: 0;
+}
+
+/* Social icon buttons have comfortable circular targets; glyphs remain inset. */
+.social-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+}
+.social-links a {
+  display: inline-flex;
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.social-links svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+/* Keep the established centered mobile arrangement and avoid horizontal overflow. */
+@media (max-width: 700px) {
+  .page-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    column-gap: 0;
+    row-gap: 24px;
+    width: 100%;
+  }
+  .profile-sidebar {
+    position: static !important;
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  main#content {
+    width: 100%;
+    min-width: 0;
+  }
+  .social-links {
+    justify-content: center;
+  }
+}
