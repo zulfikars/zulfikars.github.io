@@ -406,5 +406,51 @@ main#content > h3:first-child {
 /* Keep ordered-list markers aligned with the left edge of section headings. */
 main#content ol {
   margin-left: 0;
-  padding-left: 1.5em;
+  padding-left: 2.5em;
+}
+
+
+/* ===== Speakings & Travels: 960px content area without profile sidebar ===== */
+.wide-content-page .page-layout,
+body.wide-content-page .page-layout {
+  display: block;
+  width: 100%;
+  max-width: 960px;
+  margin: 34px auto 0;
+}
+.wide-content-page main#content,
+body.wide-content-page main#content {
+  display: block;
+  width: 100%;
+  max-width: 960px;
+  min-width: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Travels: four country columns on desktop, two on mobile. */
+body.travels-page main#content ol {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(12, auto);
+  grid-auto-flow: column;
+  column-gap: 28px;
+  row-gap: 5px;
+  padding-left: 1.8em;
+}
+body.travels-page main#content ol li {
+  break-inside: avoid;
+  min-width: 0;
+}
+
+@media (max-width: 700px) {
+  .wide-content-page .page-layout,
+  body.wide-content-page .page-layout {
+    margin-top: 24px;
+  }
+  body.travels-page main#content ol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 20px;
+    row-gap: 5px;
+  }
 }
