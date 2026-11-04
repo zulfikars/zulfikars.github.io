@@ -114,5 +114,89 @@
     © muhzulfikar.org. 
 </footer>
 </div><!-- /.page-layout -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const dropdown = document.querySelector(".nav-dropdown");
+  if (!dropdown) return;
+
+  const trigger = dropdown.querySelector(":scope > a");
+  const toggle = dropdown.querySelector(".dropdown-toggle");
+  const menu = dropdown.querySelector(".publications-submenu");
+
+  function setOpen(open) {
+    dropdown.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute(
+      "aria-label",
+      open ? "Close Publications submenu" : "Open Publications submenu"
+    );
+  }
+
+  let closeTimer = null;
+  const closeDelay = 450;
+
+  function cancelScheduledClose() {
+    if (closeTimer !== null) {
+      window.clearTimeout(closeTimer);
+      closeTimer = null;
+    }
+  }
+
+  function scheduleClose() {
+    cancelScheduledClose();
+    closeTimer = window.setTimeout(function () {
+      setOpen(false);
+      closeTimer = null;
+    }, closeDelay);
+  }
+
+  dropdown.addEventListener("pointerenter", function () {
+    cancelScheduledClose();
+    if (window.matchMedia("(min-width: 701px)").matches) {
+      setOpen(true);
+    }
+  });
+
+  dropdown.addEventListener("pointerleave", function () {
+    if (window.matchMedia("(min-width: 701px)").matches) {
+      scheduleClose();
+    }
+  });
+
+  trigger.addEventListener("click", function (event) {
+    event.preventDefault();
+    cancelScheduledClose();
+    setOpen(true);
+  });
+
+  toggle.addEventListener("click", function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    cancelScheduledClose();
+    setOpen(!dropdown.classList.contains("is-open"));
+  });
+
+  document.addEventListener("click", function (event) {
+    if (!dropdown.contains(event.target)) {
+      setOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+
+  menu.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      setOpen(false);
+    });
+  });
+});
+</script>
+
 </body>
 </html>
