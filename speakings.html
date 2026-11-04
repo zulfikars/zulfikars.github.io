@@ -22,7 +22,75 @@
 <title>Speakings | Dr. Muhammad Zulfikar Rakhmat</title>
 </head>
 <body class="speakings-page wide-content-page">
-<header class="site-header" id="banner"><h2><a href="index.html">Dr. Muhammad <strong>Zulfikar Rakhmat</strong></a></h2><nav aria-label="Main navigation" class="top-nav"><ul><li><a href="index.html">Bio</a></li><li><a href="publications.html">Publications</a></li><li><a aria-current="page" class="active" href="speakings.html">Speakings</a></li><li><a href="travels.html">Travels</a></li></ul></nav></header>
+<header class="site-header" id="banner">
+  <h2>
+    <a href="index.html">
+      Dr. Muhammad <strong>Zulfikar Rakhmat</strong>
+    </a>
+  </h2>
+
+  <nav aria-label="Main navigation" class="top-nav">
+    <ul>
+      <li>
+        <a href="index.html">Bio</a>
+      </li>
+
+      <li class="nav-dropdown">
+        <a href="publications.html">Publications</a>
+
+        <button
+          class="dropdown-toggle"
+          type="button"
+          aria-label="Open Publications submenu"
+          aria-expanded="false"
+          aria-controls="publications-submenu">
+          <span aria-hidden="true">⌄</span>
+        </button>
+
+        <ul class="publications-submenu" id="publications-submenu">
+
+          <li class="mega-menu-column">
+            <h3>Academic Publications</h3>
+            <ul>
+              <li><a href="publications.html#books">Books</a></li>
+              <li><a href="publications.html#book-chapters">Book chapter</a></li>
+              <li><a href="publications.html#peer-reviewed-articles">Peer-reviewed articles</a></li>
+              <li><a href="publications.html#research-reports">Research reports</a></li>
+              <li><a href="publications.html#academic-theses">Academic theses</a></li>
+            </ul>
+          </li>
+
+          <li class="mega-menu-column">
+            <h3>Opinion &amp; Commentary</h3>
+            <ul>
+              <li><a href="publications.html#op-eds-china-indonesia">Op-eds on China-Indonesia relations</a></li>
+              <li><a href="publications.html#op-eds-indonesia-middle-east">Op-eds on Indonesia-Middle East relations</a></li>
+              <li><a href="publications.html#op-eds-china-middle-east">Op-eds on China-Middle East relations</a></li>
+              <li><a href="publications.html#op-eds-disability-indonesia">Op-eds on disability in Indonesia</a></li>
+            </ul>
+          </li>
+
+          <li class="mega-menu-column">
+            <h3>Writing Projects</h3>
+            <ul>
+              <li><a href="publications.html#writing-socio-economic-indonesia">Writing project on socio-economic issues in Indonesia (2015-2020)</a></li>
+              <li><a href="publications.html#writing-muslim-affairs">Writing project on Muslim affairs (2014-2019)</a></li>
+            </ul>
+          </li>
+
+        </ul>
+      </li>
+
+      <li>
+        <a href="speakings.html" aria-current="page" class="active">Speakings</a>
+      </li>
+
+      <li>
+        <a href="travels.html">Travels</a>
+      </li>
+    </ul>
+  </nav>
+</header>
 <div class="page-layout wide-content-page">
 <main id="content"><h3 id="Public speaking">Speaking engagements</h3><ol reversed="">
 <li><i>June 2026:</i> "Understanding the New Development Bank (NDB) and How Civil Society Can Influence It" in a joint webinar organised by Center of Economic and Law Studies and Climate &amp; Energy Justice Collective [Indonesia] (online)
@@ -185,6 +253,88 @@
     © muhzulfikar.org. 
 </footer>
 </div><!-- /.page-layout -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const dropdown = document.querySelector(".nav-dropdown");
+  if (!dropdown) return;
+
+  const trigger = dropdown.querySelector(":scope > a");
+  const toggle = dropdown.querySelector(".dropdown-toggle");
+  const menu = dropdown.querySelector(".publications-submenu");
+
+  function setOpen(open) {
+    dropdown.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute(
+      "aria-label",
+      open ? "Close Publications submenu" : "Open Publications submenu"
+    );
+  }
+
+  let closeTimer = null;
+  const closeDelay = 450;
+
+  function cancelScheduledClose() {
+    if (closeTimer !== null) {
+      window.clearTimeout(closeTimer);
+      closeTimer = null;
+    }
+  }
+
+  function scheduleClose() {
+    cancelScheduledClose();
+    closeTimer = window.setTimeout(function () {
+      setOpen(false);
+      closeTimer = null;
+    }, closeDelay);
+  }
+
+  dropdown.addEventListener("pointerenter", function () {
+    cancelScheduledClose();
+    if (window.matchMedia("(min-width: 701px)").matches) {
+      setOpen(true);
+    }
+  });
+
+  dropdown.addEventListener("pointerleave", function () {
+    if (window.matchMedia("(min-width: 701px)").matches) {
+      scheduleClose();
+    }
+  });
+
+  trigger.addEventListener("click", function (event) {
+    event.preventDefault();
+    cancelScheduledClose();
+    setOpen(true);
+  });
+
+  toggle.addEventListener("click", function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    cancelScheduledClose();
+    setOpen(!dropdown.classList.contains("is-open"));
+  });
+
+  document.addEventListener("click", function (event) {
+    if (!dropdown.contains(event.target)) {
+      setOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+
+  menu.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      setOpen(false);
+    });
+  });
+});
+</script>
 </body>
 </html>
-
