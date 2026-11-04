@@ -612,3 +612,89 @@ main#content h3[id] { scroll-margin-top:28px; }
     transform: scale(1);
   }
 }
+
+
+/* ===== Publications dropdown chevron: alignment and animation refinement ===== */
+header#banner.site-header nav.top-nav .nav-dropdown {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+header#banner.site-header nav.top-nav .nav-dropdown > a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  line-height: 1.2;
+}
+
+header#banner.site-header nav.top-nav .dropdown-toggle {
+  display: inline-flex;
+  flex: 0 0 18px;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 34px;
+  min-height: 34px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: 1;
+  cursor: pointer;
+  transform: none;
+  transition: background-color 180ms ease, opacity 180ms ease;
+}
+
+header#banner.site-header nav.top-nav .dropdown-toggle span {
+  display: block;
+  width: 7px;
+  height: 7px;
+  margin: -3px 0 0;
+  padding: 0;
+  border: 0;
+  border-right: 1.6px solid currentColor;
+  border-bottom: 1.6px solid currentColor;
+  background: transparent;
+  font-size: 0;
+  line-height: 0;
+  transform: rotate(45deg);
+  transform-origin: center;
+  transition: transform 180ms cubic-bezier(.2, .7, .3, 1);
+}
+
+header#banner.site-header nav.top-nav .nav-dropdown.is-open .dropdown-toggle span,
+header#banner.site-header nav.top-nav .dropdown-toggle[aria-expanded="true"] span {
+  margin-top: 3px;
+  transform: rotate(225deg);
+}
+
+header#banner.site-header nav.top-nav .dropdown-toggle:hover {
+  background-color: rgba(0, 125, 250, .08);
+}
+
+header#banner.site-header nav.top-nav .dropdown-toggle:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+@media (max-width: 700px) {
+  header#banner.site-header nav.top-nav .nav-dropdown > a {
+    min-height: 25px;
+  }
+
+  header#banner.site-header nav.top-nav .dropdown-toggle {
+    height: 25px;
+    min-height: 25px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  header#banner.site-header nav.top-nav .dropdown-toggle,
+  header#banner.site-header nav.top-nav .dropdown-toggle span {
+    transition: none;
+  }
+}
