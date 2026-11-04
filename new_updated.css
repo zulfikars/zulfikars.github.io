@@ -698,3 +698,52 @@ header#banner.site-header nav.top-nav .dropdown-toggle:focus-visible {
     transition: none;
   }
 }
+
+
+/* ===== Final fix: close Publications mega menu after submenu link click =====
+   The menu is controlled by the .is-open class. Hover/focus must not reopen it
+   after JavaScript removes that class when a submenu link is clicked.
+*/
+header#banner.site-header nav.top-nav
+.nav-dropdown:hover:not(.is-open) > ul.publications-submenu,
+header#banner.site-header nav.top-nav
+.nav-dropdown:focus-within:not(.is-open) > ul.publications-submenu {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+header#banner.site-header nav.top-nav
+.nav-dropdown.is-open > ul.publications-submenu {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+@media (min-width: 701px) {
+  header#banner.site-header nav.top-nav
+  .nav-dropdown:hover:not(.is-open) > ul.publications-submenu,
+  header#banner.site-header nav.top-nav
+  .nav-dropdown:focus-within:not(.is-open) > ul.publications-submenu {
+    transform: scale(.99) !important;
+  }
+
+  header#banner.site-header nav.top-nav
+  .nav-dropdown.is-open > ul.publications-submenu {
+    transform: scale(1) !important;
+  }
+}
+
+@media (max-width: 700px) {
+  header#banner.site-header nav.top-nav
+  .nav-dropdown:hover:not(.is-open) > ul.publications-submenu,
+  header#banner.site-header nav.top-nav
+  .nav-dropdown:focus-within:not(.is-open) > ul.publications-submenu {
+    transform: translate(-50%, -8px) scale(.985) !important;
+  }
+
+  header#banner.site-header nav.top-nav
+  .nav-dropdown.is-open > ul.publications-submenu {
+    transform: translate(-50%, 0) scale(1) !important;
+  }
+}
